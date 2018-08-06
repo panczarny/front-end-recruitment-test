@@ -74,4 +74,22 @@
   }
 
   // Your custom JavaScript goes here
+  const on = (els, types, cb) => {
+    types.split(" ").forEach(type => {
+      if (!Array.isArray(els)) els = [els];
+      els.forEach(el => el.addEventListener(type, cb));
+    });
+  },
+  s = (sel, ctx = window.document) => Array.from(ctx.querySelectorAll(sel)),
+  s1 = (sel, ctx = window.document) => s(sel, ctx)[0];
+
+  on(document, 'DOMContentLoaded', () => {
+    const $baconImg = s1('#bacon-img'),
+    $container = s1('#bacon-container'),
+    cloneBacon = () => {
+      const $newImg = $baconImg.cloneNode();
+      $container.appendChild($newImg);
+    };
+    on(s1('#clone-bacon'), 'click', cloneBacon);
+  });
 })();
