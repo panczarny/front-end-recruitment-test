@@ -81,15 +81,39 @@
     });
   },
   s = (sel, ctx = window.document) => Array.from(ctx.querySelectorAll(sel)),
-  s1 = (sel, ctx = window.document) => s(sel, ctx)[0];
+  s1 = (sel, ctx = window.document) => s(sel, ctx)[0],
+  formValid = $form => {
+    const $textFields = s('.mdl-textfield', $form).filter($field => s1('input', $field));
+    return $textFields.every($field => !$field.classList.contains('is-invalid'));
+  };
 
   on(document, 'DOMContentLoaded', () => {
     const $baconImg = s1('#bacon-img'),
     $container = s1('#bacon-container'),
+    $form = s1('form'),
+    $dialog = s1('dialog'),
     cloneBacon = () => {
       const $newImg = $baconImg.cloneNode();
       $container.appendChild($newImg);
+    },
+    setDialogSuccess = () => {
+      const $title = s1('.title', $dialog),
+      $content = s1('.content', $dialog);
+      $title.innerText = 'Purchase success';
+      $content.innerText = 'You successfully paid for your order. Please check your email for further information.';
+    },
+    setDialogError = () => {
+      const $title = s1('.title', $dialog),
+      $content = s1('.content', $dialog);
+      $title.innerText = 'Purchase error';
+      $content.innerText = 'Please, check if your data is correct.';
     };
+    on(s1('.close', $dialog), 'click', () => $dialog.close());
     on(s1('#clone-bacon'), 'click', cloneBacon);
+    on($form, 'submit', e => {
+      e.preventDefault();
+      formValid() ? setDialogSuccess() : setDialogError();
+      $dialog.showModal();
+    });
   });
 })();
