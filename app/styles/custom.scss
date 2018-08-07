@@ -1,0 +1,150 @@
+$green-light: #6bd400;
+$green-dark: #5cb204;
+
+/*.mdl-badge {
+  &--rounded {
+    border-radius: 50%;
+    display: inline-block;
+    line-height: 20px;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+  }
+}
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+.bg {
+  &-green {
+    background-color: $green-light;
+  }
+}
+
+.section--center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.radius {
+  &-3 {
+    border-radius: 3px;
+  }
+}
+
+.border {
+  &-b {
+    border-bottom: 2px solid #ccc;
+  }
+  &-green {
+    border-color: $green-dark;
+  }
+}
+
+.mdl-layout__content {
+  section {
+    > header {
+      justify-content: flex-start;
+    }
+  }
+}
+
+form {
+  > div {
+    padding-right: 0 !important;
+  }
+  .mdl-cell {
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-left: 0;
+    margin-right: 16px;
+  }
+  .mdl-textfield {
+    padding-bottom: 10px;
+    width: 100%;
+    &__input {
+      border-bottom: none;
+    }
+    &__label:after {
+      bottom: 10px;
+    }
+  }
+  header {
+    > h6 {
+      margin-bottom: 0px;
+    }
+  }
+  h6 {
+    .material-icons {
+      font-size: 16px;
+      margin-left: 5px;
+    }
+  }
+  button[type="submit"] {
+    height: 50px;
+    &:hover {
+      background-color: $green-dark;
+    }
+  }
+  .credit-card-container {
+    position: relative;
+  }
+  #visa-badge {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 16px;
+  }
+}
+
+.your-order {
+  margin-top: 64px;
+  align-self: flex-start;
+  margin-left: 0;
+  > div {
+    margin: 8px;
+    padding: 16px 16px 32px;
+    border: 1px dotted #ccc;
+  }
+  h4, h6 {
+    margin: 0;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0 30px;
+    li {
+      display: flex;
+      justify-content: space-between;
+      &:not(:last-child) {
+        margin-bottom: 8px;
+      }
+    }
+  }
+  hr {
+    border-style: dotted;
+  }
+  p {
+    margin-bottom: 8px;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+  .split-text {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.mdl-badge {
+  &[data-badge] {
+    &:after {
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: black;
+    }
+  }
+}
